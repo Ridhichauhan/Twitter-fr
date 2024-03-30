@@ -9,7 +9,6 @@ import {
   Tab,
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "./firebaseapi";
 import { connect } from "react-redux";
 import { LocalStorageBackup } from "../components/common/switcher/switcherdata/switcherdata";
 import { ThemeChanger } from "../redux/action";
@@ -17,7 +16,7 @@ import { ThemeChanger } from "../redux/action";
 interface LoginProps {}
 
 const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
-  const [passwordshow1, setpasswordshow1] = useState(false);
+  // const [passwordshow1, setpasswordshow1] = useState(false);
   const [err, setError] = useState("");
   const [data, setData] = useState({
     email: "adminreact@gmail.com",
@@ -34,19 +33,19 @@ const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
     navigate(path);
   };
 
-  const Login = (e: any) => {
-    e.preventDefault();
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        console.log(user);
-        routeChange();
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(err.message);
-      });
-  };
+  // const Login = (e: any) => {
+  //   e.preventDefault();
+  //   auth
+  //     .signInWithEmailAndPassword(email, password)
+  //     .then((user) => {
+  //       console.log(user);
+  //       routeChange();
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setError(err.message);
+  //     });
+  // };
   const Login1 = () => {
     if (data.email == "adminreact@gmail.com" && data.password == "1234567890") {
       routeChange();
@@ -74,14 +73,14 @@ const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
                 
                 <Tab.Content>
                   <Tab.Pane eventKey="react" className="border-0 pb-2">
-                    <div className="p-4">
-                      <p className="h5 fw-semibold mb-2 text-center">Sign In</p>
+                   
+                      {/* <p className="h5 fw-semibold mb-2 text-center">Sign In</p>
                       <p className="mb-4 text-muted op-7 fw-normal text-center">
                         Welcome back Jhon !
-                      </p>
+                      </p> */}
                       <div className="row gy-3">
                         {err && <Alert variant="danger">{err}</Alert>}
-                        <Col xl={12}>
+                        {/* <Col xl={12}>
                           <Form.Label
                             htmlFor="signin-username"
                             className="form-label text-default"
@@ -153,19 +152,18 @@ const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
                               </Form.Label>
                             </div>
                           </div>
-                        </Col>
-                        <Col xl={12} className="d-grid mt-2">
+                        </Col> */}
+                      
                           <Button
                             variant="primary"
                             onClick={Login1}
                             size="lg"
                             className="btn"
                           >
-                            Sign In
+                           Click Here for Login
                           </Button>
-                        </Col>
-                      </div>
-                      <div className="text-center">
+
+                      {/* <div className="text-center">
                         <p className="fs-12 text-muted mt-3">
                           Dont have an account?{" "}
                           <Link
@@ -177,7 +175,7 @@ const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
                             Sign Up
                           </Link>
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   </Tab.Pane>
                   <Tab.Pane eventKey="firebase" className="border-0 pb-2">
