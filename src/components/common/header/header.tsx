@@ -478,7 +478,7 @@ const Header = ({ local_varaiable, ThemeChanger }: any) => {
             </div>
           </div>
 
-          <div className="header-content-right">
+          {/* <div className="header-content-right">
             <div className="header-element header-search">
               <Link
                 to="#"
@@ -1059,10 +1059,10 @@ const Header = ({ local_varaiable, ThemeChanger }: any) => {
                 <i className="bx bx-cog header-link-icon"></i>
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </header>
-      <Modal
+      {/* <Modal
         className="modal fade"
         id="searchModal"
         tabIndex={-1}
@@ -1234,7 +1234,7 @@ const Header = ({ local_varaiable, ThemeChanger }: any) => {
             </Button>
           </ButtonGroup>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </Fragment>
   );
 };

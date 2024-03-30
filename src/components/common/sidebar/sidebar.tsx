@@ -93,39 +93,39 @@ const Sidebar = ({ local_varaiable, ThemeChanger }: any) => {
               if (item === sublevel) {
                 sublevel.active = true;
               }
-              if (sublevel.children) {
-                sublevel.children.map((sublevel1: any) => {
-                  sublevel1.active = false;
-                  if (item === sublevel1) {
-                    sublevel.active = true;
-                    sublevel1.active = true;
-                  }
-                  if (sublevel1.children) {
-                    sublevel1.children.map((sublevel2: any) => {
-                      sublevel2.active = false;
-                      if (item === sublevel2) {
-                        sublevel.active = true;
-                        sublevel1.active = true;
-                        sublevel2.active = true;
-                      }
-                      if (sublevel2.children) {
-                        sublevel2.children.map((sublevel3: any) => {
-                          sublevel3.active = false;
-                          if (item === sublevel3) {
-                            sublevel.active = true;
-                            sublevel1.active = true;
-                            sublevel2.active = true;
-                            sublevel3.active = true;
-                          }
-                          return sublevel2;
-                        });
-                      }
-                      return sublevel2;
-                    });
-                  }
-                  return sublevel1;
-                });
-              }
+              // if (sublevel.children) {
+              //   sublevel.children.map((sublevel1: any) => {
+              //     sublevel1.active = false;
+              //     if (item === sublevel1) {
+              //       sublevel.active = true;
+              //       sublevel1.active = true;
+              //     }
+              //     if (sublevel1.children) {
+              //       sublevel1.children.map((sublevel2: any) => {
+              //         sublevel2.active = false;
+              //         if (item === sublevel2) {
+              //           sublevel.active = true;
+              //           sublevel1.active = true;
+              //           sublevel2.active = true;
+              //         }
+              //         if (sublevel2.children) {
+              //           sublevel2.children.map((sublevel3: any) => {
+              //             sublevel3.active = false;
+              //             if (item === sublevel3) {
+              //               sublevel.active = true;
+              //               sublevel1.active = true;
+              //               sublevel2.active = true;
+              //               sublevel3.active = true;
+              //             }
+              //             return sublevel2;
+              //           });
+              //         }
+              //         return sublevel2;
+              //       });
+              //     }
+              //     return sublevel1;
+              //   });
+              // }
               return sublevel;
             });
           }
@@ -211,67 +211,67 @@ const Sidebar = ({ local_varaiable, ThemeChanger }: any) => {
     let dd = list ? list.path + "/" : location.pathname;
     if (menuitems) {
       menuitems.filter((mainlevel: any) => {
-        if (mainlevel.Items) {
-          mainlevel.Items.filter((items: any) => {
-            if (
-              ulRef.current.href != document.location["href"] ||
-              localStorage.ynexverticalstyles != "doublemenu"
-            ) {
-              items.active = false;
-            }
-            items.selected = false;
+        // if (mainlevel.Items) {
+        //   mainlevel.Items.filter((items: any) => {
+        //     if (
+        //       ulRef.current.href != document.location["href"] ||
+        //       localStorage.ynexverticalstyles != "doublemenu"
+        //     ) {
+        //       items.active = false;
+        //     }
+        //     items.selected = false;
 
-            if (dd === "/test/ynex-ts/preview") {
-              dd = "/dashboards/crm/";
-            }
-            if (dd === items.path + "/") {
-              items.active = true;
-              items.selected = true;
-            }
-            if (items.children) {
-              items.children.filter((submenu: any) => {
-                submenu.active = false;
-                submenu.selected = false;
-                if (dd === submenu.path + "/") {
-                  const theme = store.getState();
-                  items.active =
-                    theme.dataNavLayout == "horizontal" ||
-                    theme.dataNavStyle == "icon-hover"
-                      ? false
-                      : true;
-                  items.selected = true;
-                  submenu.active = true;
-                  submenu.selected = true;
-                }
-                if (submenu.path === "#") {
-                  submenu.active = false;
-                  submenu.selected = false;
-                }
-                if (submenu.children) {
-                  submenu.children.filter((submenu1: any) => {
-                    submenu1.active = false;
-                    submenu1.selected = false;
-                    if (dd === submenu1.path + "/") {
-                      items.active = true;
-                      items.selected = true;
-                      submenu.active = true;
-                      submenu.selected = true;
-                      submenu1.active = true;
-                      submenu1.selected = true;
-                    }
-                    if (submenu1.path === "#") {
-                      submenu1.active = false;
-                      submenu1.selected = false;
-                    }
-                    return submenu1;
-                  });
-                }
-                return submenu;
-              });
-            }
-            return items;
-          });
-        }
+        //     if (dd === "/test/ynex-ts/preview") {
+        //       dd = "/dashboards/crm/";
+        //     }
+        //     if (dd === items.path + "/") {
+        //       items.active = true;
+        //       items.selected = true;
+        //     }
+        //     if (items.children) {
+        //       items.children.filter((submenu: any) => {
+        //         submenu.active = false;
+        //         submenu.selected = false;
+        //         if (dd === submenu.path + "/") {
+        //           const theme = store.getState();
+        //           items.active =
+        //             theme.dataNavLayout == "horizontal" ||
+        //             theme.dataNavStyle == "icon-hover"
+        //               ? false
+        //               : true;
+        //           items.selected = true;
+        //           submenu.active = true;
+        //           submenu.selected = true;
+        //         }
+        //         if (submenu.path === "#") {
+        //           submenu.active = false;
+        //           submenu.selected = false;
+        //         }
+        //         if (submenu.children) {
+        //           submenu.children.filter((submenu1: any) => {
+        //             submenu1.active = false;
+        //             submenu1.selected = false;
+        //             if (dd === submenu1.path + "/") {
+        //               items.active = true;
+        //               items.selected = true;
+        //               submenu.active = true;
+        //               submenu.selected = true;
+        //               submenu1.active = true;
+        //               submenu1.selected = true;
+        //             }
+        //             if (submenu1.path === "#") {
+        //               submenu1.active = false;
+        //               submenu1.selected = false;
+        //             }
+        //             return submenu1;
+        //           });
+        //         }
+        //         return submenu;
+        //       });
+        //     }
+        //     return items;
+        //   });
+        // }
         setMenuitems((arr: any) => [...arr]);
         return mainlevel;
       });
