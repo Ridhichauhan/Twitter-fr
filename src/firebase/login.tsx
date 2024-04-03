@@ -17,6 +17,7 @@ interface LoginProps {}
 
 const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
   // const [passwordshow1, setpasswordshow1] = useState(false);
+  const [loader, setLoader] = useState<Boolean>();
   const [err, setError] = useState("");
   const [data, setData] = useState({
     email: "adminreact@gmail.com",
@@ -49,6 +50,7 @@ const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
   const Login1 = () => {
     if (data.email == "adminreact@gmail.com" && data.password == "1234567890") {
       routeChange();
+        setLoader(true);
     } else {
       setError("The Auction details did not Match");
       setData({
@@ -67,20 +69,17 @@ const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
       <div className="container">
         <div className="row justify-content-center align-items-center authentication authentication-basic h-100">
           <Col xxl={4} xl={5} lg={5} md={6} sm={8} className="col-12">
-        
             <Tab.Container id="left-tabs-example" defaultActiveKey="react">
               <Card>
-                
                 <Tab.Content>
                   <Tab.Pane eventKey="react" className="border-0 pb-2">
-                   
-                      {/* <p className="h5 fw-semibold mb-2 text-center">Sign In</p>
+                    {/* <p className="h5 fw-semibold mb-2 text-center">Sign In</p>
                       <p className="mb-4 text-muted op-7 fw-normal text-center">
                         Welcome back Jhon !
                       </p> */}
-                      <div className="row gy-3">
-                        {err && <Alert variant="danger">{err}</Alert>}
-                        {/* <Col xl={12}>
+                    <div className="row gy-3">
+                      {err && <Alert variant="danger">{err}</Alert>}
+                      {/* <Col xl={12}>
                           <Form.Label
                             htmlFor="signin-username"
                             className="form-label text-default"
@@ -153,16 +152,30 @@ const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
                             </div>
                           </div>
                         </Col> */}
-                      
-                          <Button
-                            variant="primary"
-                            onClick={Login1}
-                            size="lg"
-                            className="btn"
-                          >
-                           Click Here for Login
-                          </Button>
-
+                      {loader ? (
+                        <Button
+                          variant=""
+                          className="btn btn-primary-light"
+                          type="button"
+                          disabled
+                        >
+                          <span
+                            className="spinner-border spinner-border-sm align-middle me-2"
+                            role="status"
+                            aria-hidden="true"
+                          ></span>
+                          Loading...
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="primary"
+                          onClick={Login1}
+                          size="lg"
+                          className="btn"
+                        >
+                          Click Here for Login
+                        </Button>
+                      )}
                       {/* <div className="text-center">
                         <p className="fs-12 text-muted mt-3">
                           Dont have an account?{" "}
